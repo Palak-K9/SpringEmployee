@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="base::layout(~{::section})">
+<head>
+<meta charset="UTF-8" />
+<title>Welcome !!!</title>
+</head>
+<body>
+	<section>
+		<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+			<a class="navbar-brand" th:href="@{/user/index}">Employee Details</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse"
+				data-target="#navbarSupportedContent"
+				aria-controls="navbarSupportedContent" aria-expanded="false"
+				aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<ul class="navbar-nav mr-auto">
+					<li class="nav-item active"><a class="nav-link" href="/addemp">Add New
+							Employee</a></li>
+							<li class="nav-item active"><a class="nav-link" th:href="@{/logout}">Logout</a></li>
+							<li class="nav-item active"><a class="nav-link" th:href="@{/export}">Download as PDF</a></li>
+
+				</ul>
+
+			</div>
+		</nav>
+
+		<div class="container p-5">
+			<table class="table table-striped">
+				<thead class="bg-primary text-white">
+					<tr>
+						<th scope="col">Employee Code</th>
+						<th scope="col">Employee Name</th>
+						<th scope="col">Location</th>
+						<th scope="col">Email Address</th>
+						<th scope="col">Date Of Birth</th>
+						<th scope="col">Action</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="e: ${emp}">
+						<th th:text="${e.employeeCode}"></th>
+						<td th:text="${e.employeeName}"></td>
+						<td th:text="${e.location}"></td>
+						<td th:text="${e.email}"></td>
+						<td th:text="${e.dob}"></td>
+						<td>
+							<a th:href="@{/edit/{employeeCode}(employeeCode=${e.employeeCode})}" class="btn btn-primary">Edit</a>
+							<a th:href="@{/delete/{employeeCode}(employeeCode=${e.employeeCode})}" class="btn btn-danger">Delete</a>
+						</td>
+				</tbody>
+			</table>
+		</div>
+
+
+	</section>
+</body>
+</html>

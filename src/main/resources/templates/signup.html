@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="base::layout(~{::section})">
+
+<head>
+	<meta charset="UTF-8" />
+	<title>Signup</title>
+</head>
+
+<body>
+	<section>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-8 offset-md-2">
+
+					<div class="my-card mt-3">
+
+						<h1 class="text-center">Register Here !!</h1>
+
+						<form th:action="@{/do_register}" method="post" th:object="${employees}">
+
+							<!-- name field -->
+
+							<div class="form-group">
+								<label for="name_field">Username</label>
+								<input name="name" type="text" class="form-control" id="name_field"
+									aria-describedby="emailHelp" placeholder="Enter Here" required
+									th:value="${employees.name}">
+							</div>
+
+							<!-- Email field -->
+
+							<div class="form-group">
+								<label for="email_field">Email Address</label>
+								<input name="email" type="email" class="form-control" id="email_field"
+									aria-describedby="emailHelp" placeholder="Enter Here" required
+									th:value="${employees.email}">
+							</div>
+							<!-- Password field -->
+
+							<div class="form-group">
+								<label for="password_field">Set Password</label>
+								<input name="password" type="password" class="form-control" id="password_field"
+									aria-describedby="emailHelp" placeholder="Enter Here" required>
+							</div>
+
+							<div class="container text-center">
+								<button type="submit" class="btn btn-primary text-white">Submit</button>
+								<button type="reset" class="btn btn-warning">Reset</button>
+							</div>
+
+							<a href="/signin">Already an existing user? Login</a>
+
+
+						</form>
+
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</section>
+</body>
+
+</html>
